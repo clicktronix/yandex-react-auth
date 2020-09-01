@@ -1,0 +1,18 @@
+body {
+  background-color: #000000;
+  color: #02FF00;
+  box-sizing: border-box;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+.registerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}

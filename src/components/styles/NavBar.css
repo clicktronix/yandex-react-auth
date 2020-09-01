@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #02FF00;
+}
+.navbar__logo {
+  padding: 24px;
+  margin-left: 12px;
+}
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-right: 64px;
+}
+.navbar__link {
+  color: #02FF00;
+  margin-left: 24px;
+  text-decoration: none;
+}
+.navbar__button {
+  background-color: black;
+  border: none;
+  font-size: 16px;
+}

@@ -1,0 +1,40 @@
+.my-profile {
+  display: flex;
+  justify-content: center;
+}
+.my-profile__container {
+  border: 2px solid #02FF00;
+  margin-top: 64px;
+  width: 50%;
+}
+.my-profile__header {
+  
+}
+.my-profile__rule {
+  border: 1px solid #02FF00;
+  width: 80%;
+}
+.my-profile__header p {
+  font-size: 32px;
+  text-align: center;
+}
+.my-profile__info {
+  padding: 36px;
+}
+.my-profile__user {
+  display: flex;
+  justify-content: space-between;
+}
+.my-profile__value {
+  color: white;
+}
+@media screen and (max-width: 700px) {
+ .my-profile__container {
+   width: 80%;
+ }
+}
+@media screen and (max-width: 500px) {
+ .my-profile__container {
+   width: 90%;
+ }
+}

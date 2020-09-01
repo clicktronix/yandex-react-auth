@@ -1,0 +1,31 @@
+.duck-card {
+  border: 2px solid #02FF00;
+  width: 50%;
+  margin-top: 64px;
+}
+.duck-card__image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 36px;
+}
+.duck-card__desc {
+  border-top: 2px solid #02FF00;
+  padding: 36px;
+}
+.duck-card__name {
+  font-size: 24px;
+}
+@media screen and (max-width: 700px) {
+ .duck-card__png {
+   width: 200px;
+ }
+ .duck-card {
+   width: 70%;
+ }
+}
+@media screen and (max-width: 400px) {
+ .duck-card__png {
+   width: 100px;
+ }
+}
