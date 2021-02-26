@@ -24,11 +24,12 @@ export default function App() {
       duckAuth.getContent(jwt)
         .then((res) => {
           if (res) {
+            setLoggedIn(true);
             setData({
               username: res.username,
               email: res.email
             })
-            setLoggedIn(true);
+            history.push('/ducks');
           }
         })
         .catch(() => history.push('/login'));
@@ -37,7 +38,7 @@ export default function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [])
+  }, [tokenCheck])
 
   const handleLogin = ({ username, password }) => {
     return duckAuth.authorize(username, password).then(res => {
