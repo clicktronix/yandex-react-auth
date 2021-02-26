@@ -4,6 +4,7 @@ import Logo from './Logo.js';
 import './styles/Register.css';
 
 export default function Register({ onRegister }) {
+  // задаем начальные значения для данных
   const initialData = {
     username: '',
     email: '',
@@ -13,6 +14,7 @@ export default function Register({ onRegister }) {
   const [message, setMessage] = useState('');
   const history = useHistory();
 
+  // Обрабатываем изменения в инпутах и записываем их в стейт
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData(data => ({
@@ -21,21 +23,27 @@ export default function Register({ onRegister }) {
     }));
   }
 
+  // Очищаем форму и ошибки
   const resetForm = () => {
     setData(initialData);
     setMessage('');
   }
 
   const handleSubmit = (e) => {
+    // Отменяем базовые действия при сабмите формы
     e.preventDefault();
 
+    // Если поле username, email или password пустое, то ничего не делаем
+    // (тут можно показывать ошибку, что поля не заполнены)
     if (!data.username || !data.password || !data.email) {
       return;
     }
 
     onRegister(data)
       .then(resetForm)
+      // Перенаправляем пользователя на страницу логина при успешной регистрации
       .then(() => history.push('/login'))
+      // Отлавливаем ошибки запроса и записываем их в стейт
       .catch(err => setMessage(err.message || 'Что-то пошло не так'))
   }
 

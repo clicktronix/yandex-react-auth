@@ -4,6 +4,7 @@ import Logo from './Logo.js';
 import './styles/Login.css';
 
 export default function Login({ onLogin }) {
+  // задаем начальные значения для данных
   const initialData = {
     username: '',
     password: '',
@@ -12,6 +13,7 @@ export default function Login({ onLogin }) {
   const [message, setMessage] = useState('');
   const history = useHistory();
 
+  // Обрабатываем изменения в инпутах и записываем их в стейт
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData(data => ({
@@ -20,21 +22,27 @@ export default function Login({ onLogin }) {
     }));
   }
 
+  // Очищаем форму и ошибки
   const resetForm = () => {
     setData(initialData);
     setMessage('');
   }
 
   const handleSubmit = (e) => {
+    // Отменяем базовые действия при сабмите формы
     e.preventDefault();
 
+    // Если поле username или password пустое, то ничего не делаем
+    // (тут можно показывать ошибку, что поля не заполнены)
     if (!data.username || !data.password) {
       return;
     }
 
     onLogin(data)
       .then(resetForm)
+      // Перенаправляем пользователя на главную страницу при успешном логине
       .then(() => history.push('/ducks'))
+      // Отлавливаем ошибки запроса и записываем их в стейт
       .catch(err => setMessage(err.message || 'Что-то пошло не так'))
   }
 
