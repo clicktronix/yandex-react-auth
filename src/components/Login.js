@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Logo from './Logo.js';
 import './styles/Login.css';
@@ -11,12 +11,6 @@ export default function Login({ onLogin }) {
   const [data, setData] = useState(initialData);
   const [message, setMessage] = useState('');
   const history = useHistory();
-
-  useEffect(() => {
-    if (localStorage.getItem('jwt')) {
-      history.push('/ducks')
-    }
-  }, [history])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
