@@ -1,5 +1,7 @@
 export const BASE_URL = 'https://api.nomoreparties.co';
 
+const responseCheck = (response) => response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
+
 export const register = (username, password, email) => {
   return fetch(`${BASE_URL}/auth/local/register`, {
     method: 'POST',
@@ -7,16 +9,11 @@ export const register = (username, password, email) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username, password, email})
+    body: JSON.stringify({ username, password, email })
   })
-  .then((response) => {
-    return response.json();
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));
+    .then(responseCheck)
 };
+
 export const authorize = (identifier, password) => {
   return fetch(`${BASE_URL}/auth/local`, {
     method: 'POST',
@@ -24,19 +21,11 @@ export const authorize = (identifier, password) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({identifier, password})
+    body: JSON.stringify({ identifier, password })
   })
-  .then((response => response.json()))
-  .then((data) => {
-    if (data.user){
-      localStorage.setItem('jwt', data.jwt);
-      return data;
-    } else {
-      return;
-    }
-  })
-  .catch(err => console.log(err))
+    .then(responseCheck)
 };
+
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
@@ -46,8 +35,5 @@ export const getContent = (token) => {
       'Authorization': `Bearer ${token}`,
     }
   })
-  .then(res => res.json())
-  .then(data => data)
+    .then(responseCheck)
 }
-
-
